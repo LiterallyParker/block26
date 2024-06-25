@@ -11,11 +11,19 @@ export default function ContactList() {
  const [contacts, setContacts] = useState(dummyContacts);
 
  useEffect(() => {
+
   async function fetchContacts() {
+
     try {
-      const response = await fetch("https://jsonplace-univclone.herokuapp.com/users");
-      const result = await response.json();
-      return result
+      const response = await fetch("https://jsonplace-univclone.herokuapp.com/users", {
+        method: "get",
+        mode: "no-cors",
+        headers: {
+          'Content-Type':'application/json',
+          'Access-Control-Allow-Origin':''
+        }
+      });
+      console.log(response)
     } catch (error) {
       console.error(error);
     }
